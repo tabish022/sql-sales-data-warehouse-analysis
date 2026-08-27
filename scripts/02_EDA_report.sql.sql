@@ -34,7 +34,6 @@ WHERE order_date IS NOT NULL;
 -- FOUND: data runs 2010-12-29 → 2014-01-28 (~36 months), but 2010 and
 -- 2010 and 2014 are nearly-empty year 
 
-
 -- Youngest / oldest customer by birthdate
 SELECT
     MIN(birthdate) AS oldest_birthdate,
@@ -61,6 +60,7 @@ FROM fact_sales;
 -- the dimension has at least one order — this table was built as a
 -- "customers who purchased" mart) | 130 of the 295 products in the
 -- catalog actually sold.
+
 
 -- ============ 5. MAGNITUDE ANALYSIS (measures BY dimension) ============
 -- Revenue & customer count by country
@@ -127,6 +127,7 @@ SELECT * FROM (
     GROUP BY p.product_name
 ) t
 WHERE rn <= 5;
+
 
 -- ============ 7. CONSOLIDATED KEY METRICS REPORT ============
 SELECT 'Total Sales' AS measure_name, SUM(sales_amount) AS measure_value FROM fact_sales

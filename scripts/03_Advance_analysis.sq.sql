@@ -52,6 +52,7 @@ ORDER BY category_revenue DESC;
 -- in bikes; accessories/clothing are rounding errors by comparison —
 -- worth knowing before recommending a "grow accessories" initiative.
 
+
 -- ============ 4. DATA SEGMENTATION ============
 -- Customers by spend tier + tenure
 WITH customer_agg AS (
@@ -90,6 +91,7 @@ GROUP BY CASE WHEN cost < 100 THEN 'Below 100'
               WHEN cost BETWEEN 500 AND 1000 THEN '500-1000'
               ELSE 'Above 1000' END
 ORDER BY num_products DESC;
+
 
 -- ============ 5. ROLLUP: subtotal + grand total revenue by category/subcategory ============
 SELECT

@@ -50,6 +50,7 @@ SELECT DISTINCT category FROM dim_products;
 -- FOUND: 'Bikes','Components','Clothing','Accessories' + 7 products with
 -- a blank category — worth flagging to whoever owns the product master.
 
+
 -- 6. Implausible birthdates (age outliers)
 SELECT customer_key, first_name, last_name, birthdate,
     TIMESTAMPDIFF(YEAR, birthdate, CURDATE()) AS age
@@ -62,7 +63,7 @@ WHERE birthdate IS NOT NULL
 -- rather than silently trust.
 
 
--- 8. Duplicate natural keys
+-- 7. Duplicate natural keys
 SELECT customer_id, COUNT(*) FROM dim_customers GROUP BY customer_id HAVING COUNT(*) > 1;
 SELECT product_id, COUNT(*) FROM dim_products  GROUP BY product_id  HAVING COUNT(*) > 1;
 SELECT order_number, product_key, customer_key, COUNT(*)
